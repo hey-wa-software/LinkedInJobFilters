@@ -1,2 +1,3 @@
-# LinkedInJobFilters
-Improve your job search by removing irrelevant job search results.
+# LinkedIn Job Search Result Filters
+
+Focus on interesting job opportunities by removing the uninteresting ones.
