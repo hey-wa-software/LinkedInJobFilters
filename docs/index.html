@@ -1,15 +1,596 @@
 <html>
-    <head>
-        <title>LinkedIn Job Search Filters</title>
-    </head>
-    <body>
-        <h1>LinkedIn Job Search Filters</h1>
 
-        <div>
-            This browser extension helps you focus on the job opportunities that you care about by hiding the ones you don't.
-        </div>
-        <div>
-            You can specify which employers, job titles, and locations you want and to see and the extension will automatically remove the ones you don't.
-        </div>
-    </body>
+<head>
+    <title>LinkedIn Job Search Result Filters</title>
+    <style>
+        img {
+            width: 75%;
+            height: 75%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>LinkedIn Job Search Result Filters</h1>
+
+    <ul>
+        <li><a href="#gettingStarted">Getting Started</a></li>
+        <li><a href="#howItWorks">How the Extension Works</a></li>
+    </ul>
+
+    <p>
+        This browser extension helps you focus on the job opportunities that you care about by hiding the ones you
+        don't.
+    </p>
+    <p>
+        You can specify which employers, job titles, and locations you want and to see and the extension will
+        automatically remove the ones you don't.
+    </p>
+
+    <h2><a name="gettingStarted">Getting Started</a></h2>
+
+    <ul>
+        <li><a href="#openFilterEditor">Open the Filter Editor</a></li>
+        <li><a href="#tourFilterEditor">Tour the Filter Editor</a></li>
+        <li><a href="#yourFirstFilter">Your First Filter</a></li>
+    </ul>
+
+    <h3><a name="openFilterEditor">Open the Filter Editor</a></h3>
+
+    <ol>
+        <li>
+            Open the "⁝" or "..." menu > Extensions
+            <table>
+                <tr>
+                    <th>Chrome</th>
+                    <th>Edge</th>
+                </tr>
+                <tr valign="top">
+                    <td><img src="./Extension%20Menu%20-%20Google%20Chrome.png"></td>
+                    <td><img src="./Extension%20Menu%20-%20Microsoft%20Edge.png"></td>
+                </tr>
+            </table>
+        </li>
+        <li>
+            Pin the extension's icon to the toolbar
+            <table>
+                <tr>
+                    <th>Chrome</th>
+                    <th>Edge</th>
+                </tr>
+                <tr valign="top">
+                    <td><img src="./Pin%20Extension%20-%20Google%20Chrome.png"></td>
+                    <td><img src="./Pin%20Extension%20-%20Microsoft%20Edge.png"></td>
+                </tr>
+            </table>
+        </li>
+        <li>
+            Click the extension's icon to open its sidepanel
+            <table>
+                <tr>
+                    <th>Chrome</th>
+                    <th>Edge</th>
+                </tr>
+                <tr valign="top">
+                    <td><img src="./Pinned%20Extension%20in%20Toolbar%20-%20Google%20Chrome.png"></td>
+                    <td><img src="./Pinned%20Extension%20in%20Toolbar%20-%20Microsoft%20Edge.png"></td>
+                </tr>
+            </table>
+        </li>
+    </ol>
+
+    <h3><a name="tourFilterEditor">Tour the Filter Editor</a></h3>
+
+    <ul>
+        <li><a href="#whatTheBrowserLooksLike">What will the browser look like?</a></li>
+        <li><a href="#whatIsInTheFilterEditor">What's in the Filter Editor?</a></li>
+    </ul>
+
+    <h4><a name="whatTheBrowserLooksLike">What will the browser look like?</a></h4>
+
+    <p>
+        The Filter Editor is designed to appear alongside your LinkedIn job search results page and remain open while
+        you navigate them.
+    </p>
+    <p>
+        You can open and close the sidepanel at any time by clicking the extension's icon. To make this convenient,
+        consider pinning the extension's icon to your browser's toolbar.
+    </p>
+    <p>
+        What's going on in the screenshot below?
+    </p>
+    <ul>
+        <li>
+            The LinkedIn job search results page is visible on the left.
+        </li>
+        <li>
+            The Filter Editor is visible in the sidepanel on the right.
+        </li>
+        <li>
+            On the left, the two Amazon jobs in the "Top job picks for you"
+            section are shown with a reddish background color because they
+            were automatically dismissed by a job filter.
+        </li>
+        <li>
+            On the right, the word "Amazon" appears under the Undesirable
+            Employer heading. This is the filter that caused the two Amazon
+            jobs to be automatically dismissed by this extension.
+        </li>
+    </ul>
+
+    <img src="./Layout-Sidepanel.png">
+
+    <h4><a name="#whatIsInTheFilterEditor">What's in the Filter Editor?</a></h4>
+
+    <ul>
+        <li>
+            A "Refresh Filters" button.
+            <ul>
+                <li><img src="./Layout-RefreshButton.png"></li>
+                <li>This button lives at the top of the Filter Editor.</li>
+                <li>
+                    <ins>
+                        (Known issue: synchronizing filters with your other computers is currently disabled due to a
+                        bug.)
+                    </ins>
+                    <del>
+                        Press this button to sync your filters with changes that you might have made in other instances
+                        of this browser on this or on other computers.
+                    </del>
+                </li>
+            </ul>
+        </li>
+        <li>
+            A "Open LinkedIn Job Search Page" link.
+            <ul>
+                <li><img src="./Layout-LinkedInButton.png"></li>
+                <li>This link is next to the Refresh button.</li>
+                <li>
+                    Click this link to open https://www.linkedin.com/jobs/
+                    in a browser tab; it's a convenient way to begin or resume your job search.
+                </li>
+            </ul>
+        </li>
+        <li>
+            Three pairs of filters.
+            <ul>
+                <li>Employer Names</li>
+                <li>Job Titles</li>
+                <li>Job Locations</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3><a name="yourFirstFilter">Your First Filter</a></h3>
+
+    <p>
+        Here's a scenario that you've probably run into -- it's a scenario that this extension was designed specifically
+        to address:
+    </p>
+    <dl>
+        <dt>
+            LinkedIn shows you results that you're likely to dismiss, no matter how carefully you define your job search
+            criteria.
+        </dt>
+        <dd>
+            <p>
+                You're scrolling or paging through the job search results.
+                Some are relevant and interesting, and some are not. Some
+                you're qualified for, and some you're not.
+            </p>
+            <p>
+                Normally, you can click that little "x" (dismiss) button in the
+                top-right corner of a search result to ask LinkedIn not to show
+                you that job anymore.
+            </p>
+            <img src="./Linkedin-Dismiss-Button.png">
+            <p>
+                But the more you search, the more you run into these jobs you won't
+                or can't apply to. Clicking the dismiss button becomes a chore.
+                You start to notice patterns among the jobs you quickly dismiss:
+            </p>
+            <dl>
+                <dt>
+                    Certain employers don't offer any jobs that are interesting to you.
+                </dt>
+                <dd>
+                    They're contract agencies but you're looking for full-time work.
+                </dd>
+                <dt>
+                    Certain job titles are not interesting to you.
+                </dt>
+                <dd>
+                    You're a software tester, but are seeing IT or software programmer jobs.
+                </dd>
+                <dt>
+                    There are locations that you're not willing to commute or relocate to.
+                </dt>
+                <dd>
+                    Its easier to get LinkedIn to show you more jobs than to tell it what you don't want to see.
+                </dd>
+            </dl>
+            <p>
+                So instead, this extension lets you describe what you're <em>not</em> looking for, and will
+                <em>automatically</em> dismiss those job search results for you. Read on to learn how.
+            </p>
+        </dd>
+    </dl>
+
+    <h4>Example scenario: Searching for "ski instructor" shows unrelated job titles</h4>
+
+    <p>
+        When I first searched LinkedIn for "ski instructor" positions, among the first 20 results, only one was a ski
+        instructor and I had to scroll down quite a ways to see it.
+    </p>
+    <p>
+        The rest were related to physical activity and other
+        sports, but not skiing. For example: Certified Personal Trainer, Swim Team Coach (Seasonal), and Group Fitness
+        Instructor.
+    </p>
+
+    <p>
+        When you first open the sidepanel, it will look something like this:
+    </p>
+    <div style="margin: 0 5em 0 5em; padding: 1em; border: 1px solid black">
+        <button>Refresh Filters</button>
+        <u>Open LinkedIn Job Search Page</u>
+        <u>Help/Documentation</u>
+        <hr />
+        <table>
+            <tr>
+                <form id="example-form">
+                    <table>
+                        <tr>
+                            <td colspan="3">Desired Employer Names</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input style="text-align: right" value="(type here)">
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                <button>❌</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                <button>➕</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Undesired Employer Names</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input style="text-align: right" value="(type here)">
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                <button>❌</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                <button>➕</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Desired Job Titles</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input style="text-align: right" value="(type here)">
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                <button>❌</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                <button>➕</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Undesired Job Titles</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input style="text-align: right" value="(type here)">
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                <button>❌</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                <button>➕</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Desired Job Locations</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input style="text-align: right" value="(type here)">
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                <button>❌</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                <button>➕</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Undesired Job Locations</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input style="text-align: right" value="(type here)">
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                <button>❌</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                <button>➕</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+                </form>
+            </tr>
+        </table>
+        <hr />
+        <button style="color: red">
+            Delete All Filters
+        </button>
+    </div>
+
+    <ol>
+        <li>
+            <p>
+                Search <a
+                    href="https://www.linkedin.com/jobs/search/?currentJobId=4183456899&geoId=92000000&keywords=ski%20instructor">LinkedIn
+                    Jobs for "ski instructor"</a>
+            </p>
+            <img src="./Scenario-Search-Ski-Instructor.png">
+        </li>
+        <li>
+            Review the search results for "ski instructor" opportunities. If you're lucky, you'll find a job title that
+            exactly matches "ski instructor", but chances are that many job titles are instead related to other sports,
+            or use terms like "coach" and "trainer".
+        </li>
+        <li>
+            Before you define filters that will remove jobs that don't belong, first create a filter that will protect
+            the jobs you want to pay attention to:
+            <ol>
+                <li>
+                    In the Filter Editor (the sidepanel), look for the heading "Desirable Job Titles".
+                </li>
+                <li>
+                    Under that heading, click in the text box that contains "(type here)". The "(type here)" hint will
+                    automatically disappear.
+                </li>
+                <li>
+                    Type "ski instructor" into that text box without the quotation marks.
+                </li>
+                <li>
+                    Press the "✔️" button to add that "I like jobs with this title" filter.
+                </li>
+            </ol>
+        </li>
+        <li>
+            Now define one or more filters that will remove jobs that don't belong.
+            <ol>
+                <li>
+                    In the Filter Editor, look for the heading "Undesirable Job Titles".
+                </li>
+                <li>
+                    Under that heading, click in the text box that contains "(type here)". The "(type here)" hint will
+                    automatically disappear.
+                </li>
+                <li>
+                    Into that text box, type <em>one</em> of the undesirable job titles. In my case, one of the
+                    undesirable job titles was "Martial Arts Instructor".
+                </li>
+                <li>
+                    🩷 Protip: It can be powerful to pair a longer, more specific phrase in a "Desirable" filter with a
+                    shorter, less specific phrase in the corresponding "Undesirable" filter. For example:
+                    <dl>
+                        <dt>Desirable Job Title: "ski instructor"</dt>
+                        <dd>This will prevent the phrase "ski instructor" from being dismissed when it appears in a job
+                            title.</dd>
+                        <dt>Undesirable Job Title: "instructor"</dt>
+                        <dd>When a job title contains the word "instructor" but <em>not</em> the phrase "ski
+                            instructor", it will be dismissed. This includes "golf instructor" and "yoga instructor", so
+                            you don't have to specify each undesirable instructor separately!</dd>
+                    </dl>
+                </li>
+                <li>
+                    Press the "✔️" button to add that "I don't like jobs with this title" filter.
+                </li>
+            </ol>
+        </li>
+        <li>
+            Shortly after pressing the "✔️" button, you'll see the page automatically update.
+            <ul>
+                <li>
+                    Each job that has a title of "instructor" but not "ski instructor" will be dismissed for you.
+                </li>
+                <li>
+                    Each dismissed job will be shaded pink.
+                </li>
+                <li>
+                    Note that job titles without "instructor", such as "lacrosse coach", are not affected.
+                </li>
+                <li>
+                    And of course the one "ski instructor" position was preserved.
+                </li>
+                <li>
+                    ℹ️ Note that new text appears underneath each job that was touched by a filter. If a title matches
+                    an undesirable filter, the new text will say "Title matches undesirable pattern '<em>pattern</em>'."
+                    and be shaded orange or reddish. If a title matches a desirable title filter, the new text will say
+                    "Title matches desirable pattern '<em>pattern</em>'." and be shaded green.
+                </li>
+                <li>
+                    ⚠️ Note the word <em>pattern</em>: each filter is actually treated as a <a
+                        href="https://en.wikipedia.org/wiki/Case_sensitivity">case-insensitive</a> <a
+                        href="https://en.wikipedia.org/wiki/Regular_expression">regular expression</a>, so please be
+                    careful to <a href="https://en.wikipedia.org/wiki/Escape_sequence">escape</a> punctuation marks.
+                </li>
+            </ul>
+            <a href="./Scenario-Filtered-Ski-Instructor-Results.png"><img style="margin: 0 5em 0 5em"
+                    src="./Scenario-Filtered-Ski-Instructor-Results.png"></a>
+        </li>
+        <li>
+            Revise your filters as necessary:
+            <ul>
+                <li>
+                    You can add a new filter with the ➕ button.
+                    <br />
+                    <img src="./Scenario-Add-New-Filter.png">
+                </li>
+                <li>
+                    You can edit the text of any filter that you've already defined.
+                    <br />
+                    <img src="./Scenario-Add-New-Filter-Type-Here.png">
+                </li>
+                <li>
+                    You can remove a filter with its ❌ button.
+                    <br />
+                    <img src="./Scenario-Remove-Existing-Filter.png">
+                </li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2><a name="howItWorks">How the Extension Works</a></h2>
+
+    <p>
+        Each LinkedIn job search result generally looks like this:
+    <table style="margin: 0 5em 0 5em; border: 1px solid black">
+        <tr valign="top">
+            <td width="20%"">icon</td>
+                <td width=" 70%" colspan="5">
+                job title
+                <br />company name
+                <br />job location
+                <br />pay rate
+                <br />your connections who work here
+                <br />viewed • promoted • Easy Apply
+            </td>
+            <td width="10%" style="text-align: center">x</td>
+        </tr>
+    </table>
+    </p>
+    <p>
+        This extension pays attention to the job title, company name, and job location.
+    </p>
+    <p>
+        For each job on the page:
+    </p>
+    <ol>
+        <li>
+            The extension checks the job title against every <em>undesirable</em> job title filter, looking for a match
+            as a case-insensitive regular expression. If any match is found, it takes note.
+        </li>
+        <li>
+            The extension then checks the job title against every <em>desirable</em> job title filter, looking for a
+            match as a case-insensitive regular expression. If any match is found, it takes note.
+        </li>
+        <li>
+            This is repeated with the employer name filters and the job location filters.
+        </li>
+        <li>
+            <p>
+                ⚠️ If any undesirable filter matches, but none of the <em>corresponding</em> desirable filters match,
+                the job is dismissed.
+            </p>
+            <p>
+                In other words, a desirable <em>employer name</em> match cannot cancel an undesirable <em>job title</em>
+                match. Only a desirable <em>job title</em> match can prevent an undesirable <em>job title</em>
+                match from causing a job to be dismissed.
+            </p>
+        </li>
+        <li>
+            As you interact with the search results, for example by <a
+                href="https://en.wikipedia.org/wiki/Infinite_scrolling">scrolling</a>), LinkedIn can update the contents
+            of the page without refreshing it.  To keep up, this extension will continuously scan the page for changes and apply your filters again to every visible job search result.  As a result, especially on infinitely scrolling search results, you might see waves and waves of jobs being automatically dismissed and making room for new ones to scroll into view.
+        </li>
+    </ol>
+
+</body>
+
 </html>
